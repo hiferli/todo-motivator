@@ -34,9 +34,26 @@ function App() {
 		setTasks(localStorageTasks);
 	}, [])
 
+	const getMessage = () => {
+		const percentage = ((completedTasks / totalTasks) * 100);
+
+		if(percentage === 0){
+			return 'Get Started!'
+		} else if (percentage === 100){
+			return 'Hard Work Pays Off!'
+		} else {
+			return 'Keey Pushing!'
+		}
+	}
+
+	const completedTasks = tasks.filter(task => task.done).length
+	const totalTasks = tasks.length;
 
 	return (
 		<div className="main">
+			<h1>{completedTasks}/{totalTasks} Completed Tasks!</h1>
+			<h2>{getMessage()}</h2>
+
 			<TaskForm onAdd={addTask} />
 
 			{

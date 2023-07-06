@@ -1,9 +1,9 @@
 import React from 'react'
-
+import Checkbox from './Checkbox'
 const Task = () => {
   return (
     <div className='task'>
-        <input type="checkbox" />
+        <Checkbox defaultChecked = {false}/>
         Testing Task
     </div>
   )

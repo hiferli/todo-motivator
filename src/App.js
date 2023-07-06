@@ -23,6 +23,12 @@ function App() {
 		})
 	}
 
+	const removeTask = (removeIndex) => {
+		setTasks(previous => {
+			return previous.filter((taskObject , index) => index !== removeIndex)
+		})
+	}
+
 	useEffect(() => {
 		if(tasks.length !== 0){
 			localStorage.setItem("tasks", JSON.stringify(tasks))
@@ -58,7 +64,7 @@ function App() {
 
 			{
 				tasks.map((task, index) => (
-					<Task {...task} onToggle={done => updateTask(index , done)} />
+					<Task {...task} onDelete={() => removeTask(index)} onToggle={done => updateTask(index , done)} />
 				))
 			}
 

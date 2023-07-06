@@ -29,6 +29,14 @@ function App() {
 		})
 	}
 
+	const renameTask = (index , newName) => {
+		setTasks(previous => {
+			const newTasks = [...previous]
+			newTasks[index].name = newName
+			return newTasks
+		})
+	}
+
 	useEffect(() => {
 		if(tasks.length !== 0){
 			localStorage.setItem("tasks", JSON.stringify(tasks))
@@ -64,7 +72,7 @@ function App() {
 
 			{
 				tasks.map((task, index) => (
-					<Task {...task} onDelete={() => removeTask(index)} onToggle={done => updateTask(index , done)} />
+					<Task {...task} onDelete={() => removeTask(index)} onToggle={done => updateTask(index , done)} onRename={newName => renameTask(index , newName)} />
 				))
 			}
 

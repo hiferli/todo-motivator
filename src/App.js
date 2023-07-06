@@ -72,7 +72,7 @@ function App() {
 
 			{
 				tasks.map((task, index) => (
-					<Task {...task} onDelete={() => removeTask(index)} onToggle={done => updateTask(index , done)} onRename={newName => renameTask(index , newName)} />
+					<Task key={index} {...task} onDelete={() => removeTask(index)} onToggle={done => updateTask(index , done)} onRename={newName => renameTask(index , newName)} />
 				))
 			}
 

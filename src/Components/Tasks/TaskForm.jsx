@@ -14,6 +14,7 @@ const TaskForm = ({ onAdd }) => {
 			<button>+</button>
 			<input
 				type="text"
+				value={taskName}
 				placeholder='Your Next Task!'
 				onChange={(e) => setTaskName(e.target.value)}
 			/>

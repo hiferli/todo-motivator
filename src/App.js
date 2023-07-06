@@ -1,7 +1,7 @@
 import './App.css';
 import TaskForm from './Components/Tasks/TaskForm'
 import Task from './Components/Tasks/Task'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function App() {
 	const [tasks, setTasks] = useState([]);
@@ -14,6 +14,19 @@ function App() {
 			}];
 		})
 	}
+
+	useEffect(() => {
+		if(tasks.length !== 0){
+			localStorage.setItem("tasks", JSON.stringify(tasks))
+		}
+	}, [tasks])
+
+	useEffect(() => {
+		const localStorageTasks = JSON.parse(localStorage.getItem("tasks"))
+		setTasks(localStorageTasks);
+	}, [])
+
+
 	return (
 		<div className="main">
 			<TaskForm onAdd={addTask} />

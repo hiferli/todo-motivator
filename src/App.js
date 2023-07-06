@@ -20,7 +20,7 @@ function App() {
 
 			{
 				tasks.map((task, index) => (
-					<Task />
+					<Task {...task} />
 				))
 			}
 

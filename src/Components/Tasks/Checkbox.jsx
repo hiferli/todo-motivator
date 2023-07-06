@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
 
-const Checkbox = ({defaultChecked = false}) => {
-    const [checked, setChecked] = useState(defaultChecked)
+const Checkbox = ({checked = false , onClick}) => {
   return (
-    <div>
+    <div onClick={onClick}>
         {
             !checked 
             ?

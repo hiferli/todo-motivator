@@ -15,6 +15,14 @@ function App() {
 		})
 	}
 
+	const updateTask = (taskIndex , updatedStatus) => {
+		setTasks(previous => {
+			const newTasks = [...previous]
+			newTasks[taskIndex].done = updatedStatus
+			return newTasks
+		})
+	}
+
 	useEffect(() => {
 		if(tasks.length !== 0){
 			localStorage.setItem("tasks", JSON.stringify(tasks))
@@ -33,7 +41,7 @@ function App() {
 
 			{
 				tasks.map((task, index) => (
-					<Task {...task} />
+					<Task {...task} onToggle={done => updateTask(index , done)} />
 				))
 			}
 
